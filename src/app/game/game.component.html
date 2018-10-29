@@ -1,0 +1,139 @@
+<div class="body">
+
+  <div class="container">
+    <header class="header">
+      <ul class="turn-display js-players-display">
+        <li class="js-player-turn is-x" [ngClass]="currentMark==='x' ? 'is-selected' : ''">
+          <div class="turn-player">
+            <div class="x"></div>
+          </div>
+          <span class="js-player-score score">{{score.x}}</span>
+        </li>
+        <li class="js-player-turn is-o" [ngClass]="currentMark==='o' ? 'is-selected' : ''">
+          <div class="turn-player">
+            <div class="o"></div>
+          </div>
+          <span class="js-player-score score">{{score.o}}</span>
+        </li>
+      </ul>
+    </header>
+    <table class="tic-tac-toe-table js-table">
+      <tbody>
+        <tr>
+          <td class="tic-tac-toe-table-cell js-cell " data-index="0" (click)="markclicked(0)">
+            <div *ngIf="marks[0]==='x'" class="x"></div>
+            <div *ngIf="marks[0]==='o'" class="o"></div>
+
+          </td>
+          <td class="tic-tac-toe-table-cell js-cell" data-index="1" (click)="markclicked(1)">
+            <div *ngIf="marks[1]==='x'" class="x"></div>
+            <div *ngIf="marks[1]==='o'" class="o"></div>
+          </td>
+          <td class="tic-tac-toe-table-cell js-cell" data-index="2" (click)="markclicked(2)">
+            <div *ngIf="marks[2]==='x'" class="x"></div>
+            <div *ngIf="marks[2]==='o'" class="o"></div>
+
+          </td>
+        </tr>
+        <tr>
+          <td class="tic-tac-toe-table-cell js-cell" data-index="3" (click)="markclicked(3)">
+            <div *ngIf="marks[3]==='x'" class="x"></div>
+            <div *ngIf="marks[3]==='o'" class="o"></div>
+
+          </td>
+          <td class="tic-tac-toe-table-cell js-cell" data-index="4" (click)="markclicked(4)">
+            <div *ngIf="marks[4]==='x'" class="x"></div>
+            <div *ngIf="marks[4]==='o'" class="o"></div>
+
+          </td>
+          <td class="tic-tac-toe-table-cell js-cell" data-index="5" (click)="markclicked(5)">
+            <div *ngIf="marks[5]==='x'" class="x"></div>
+            <div *ngIf="marks[5]==='o'" class="o"></div>
+
+          </td>
+        </tr>
+        <tr>
+          <td class="tic-tac-toe-table-cell js-cell" data-index="6" (click)="markclicked(6)">
+            <div *ngIf="marks[6]==='x'" class="x"></div>
+            <div *ngIf="marks[6]==='o'" class="o"></div>
+
+          </td>
+          <td class="tic-tac-toe-table-cell js-cell" data-index="7" (click)="markclicked(7)">
+            <div *ngIf="marks[7]==='x'" class="x"></div>
+            <div *ngIf="marks[7]==='o'" class="o"></div>
+
+          </td>
+          <td class="tic-tac-toe-table-cell js-cell" data-index="8" (click)="markclicked(8)">
+            <div *ngIf="marks[8]==='x'" class="x"></div>
+            <div *ngIf="marks[8]==='o'" class="o"></div>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <footer class="footer">
+      <!-- <div id="pop-over" class="pop-over">
+        <p>Paste the room id in this field or ask your opponent to do so.</p>
+        <span class="pop-over-close">&times;</span>
+      </div> -->
+      <!-- <form id="refresh-game-form" class="group" action="/">
+        <label for="room-id" class="room-id-label">Room id</label><input type="text" id="room-id" class="room-id">
+      </form> -->
+      <!-- <p>Made with &#9829; by <a href="https://github.com/ramonvictor">@ramonvictor</a>. Fork it on <a href="https://github.com/ramonvictor/tic-tac-toe-js">@github</a>.</p> -->
+    </footer>
+  </div>
+</div>
+
+<!-- <div class="modal-header">
+  <h4 class="modal-title pull-left"></h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+</div> -->
+
+<ng-template #win>
+  <!-- <div class="modal"> -->
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Tic-tac-toe</h5>
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button> -->
+        </div>
+        <div class="modal-body">
+          And the winner is {{winner}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="modalRef.hide()" data-dismiss="modal">Close</button>
+          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        </div>
+      </div>
+    </div>
+  <!-- </div> -->
+</ng-template>
+
+<ng-template #tie>
+  <!-- <div class="modal"> -->
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Tic-tac-toe</h5>
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button> -->
+        </div>
+        <div class="modal-body">
+          DAMN, its a tie.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="modalRef.hide()" data-dismiss="modal">Close</button>
+          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        </div>
+      </div>
+    </div>
+  <!-- </div> -->
+</ng-template>
